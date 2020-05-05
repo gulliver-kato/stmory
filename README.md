@@ -1,24 +1,19 @@
-# README
+# 要件定義
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* バージョン情報
+- Ruby 2.6.5 Rails 5.2.4.2
 
-Things you may want to cover:
+* カタログ設計
+* 機能一覧
+* テーブル定義書
+* ER図
+- https://docs.google.com/spreadsheets/d/1zLORnv0Nmzp2jm05wuAdN8OX2qU56Zmyq7MMUQ_e7Z0/edit?usp=sharing
 
-* Ruby version
+* 画面遷移図
+* ワイヤーフレーム
+- /docs/stomoty.pdf に記載
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 使用予定Gem
+- carrierwave
+- mini_magick
+- devise
