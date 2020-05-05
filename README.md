@@ -7,7 +7,8 @@
 - https://docs.google.com/spreadsheets/d/1zLORnv0Nmzp2jm05wuAdN8OX2qU56Zmyq7MMUQ_e7Z0/edit?usp=sharing
 
 ## 画面遷移図 / ワイヤーフレーム
-- /docs/stomoty.pdf に記載
+- /docs/stomory.pdf に記載
+  (https://github.com/gulliver-kato/stmory/blob/master/docs/stomory.pdf)
 
 ## 使用予定Gem
 - carrierwave
