@@ -1,0 +1,13 @@
+<h1>Story一覧</h1>
+<table>
+  <tr>
+    <th>管理用タイトル</th>
+    <th>SNS用タイトル</th>
+  </tr>
+<% @story.each do |story| %>
+  <tr>
+    <td><%= story.admin_title %></td>
+    <td><%= story.title %></td>
+  </tr>
+<% end %>
+</table>

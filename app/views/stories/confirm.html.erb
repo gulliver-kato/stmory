@@ -1,0 +1,14 @@
+<%= form_with(model: @story, local: true) do |form| %>
+  <p>本文:<%= @story.content %></p>
+  <%= image_tag(@story.image.url) if @story.image && @story.image.url %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :content %>
+  <br><%= form.submit "投稿する"%>
+<% end %>
+
+<%= form_with(model: @story, url:new_blog_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :content %>
+  <%= form.submit "戻る", name: "back" %>
+<% end %>
+
