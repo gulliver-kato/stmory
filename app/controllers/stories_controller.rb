@@ -9,7 +9,11 @@ class StoriesController < ApplicationController
   end
 
   def new
-    @story = Story.new
+    if params[:back]
+      @story = Story.new(story_params)
+    else
+      @story = Blog.new
+    end
   end
 
   def confirm
@@ -37,6 +41,6 @@ class StoriesController < ApplicationController
   end
 
   def sotry_paramas
-    params.require(:sotry).permit(:admin_title, :title)
+    params.require(:sotry).permit(:admin_title, :title, :image, :image_cache)
   end
 end
