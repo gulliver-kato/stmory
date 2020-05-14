@@ -12,7 +12,7 @@ class StoriesController < ApplicationController
     if params[:back]
       @story = Story.new(story_params)
     else
-      @story = Blog.new
+      @story = Story.new
     end
   end
 
@@ -24,8 +24,9 @@ class StoriesController < ApplicationController
   end
 
   def create
-    Story.create(params[:story])
-    redirect_to new_story_path
+    @story = Story.new(story_params) 
+    @story.save 
+    redirect_to stories_path
   end
 
   def update
@@ -40,7 +41,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
   end
 
-  def sotry_paramas
-    params.require(:sotry).permit(:admin_title, :title, :image, :image_cache)
+  def story_params
+    params.require(:story).permit(:admin_title, :title, :thumbnail_image, :thumbnail_image_cache)
   end
 end

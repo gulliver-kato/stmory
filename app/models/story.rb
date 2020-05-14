@@ -1,3 +1,3 @@
 class Story < ApplicationRecord
-    mount_uploader :image, ImageUploader
+    mount_uploader :thumbnail_image, ImageUploader
 end

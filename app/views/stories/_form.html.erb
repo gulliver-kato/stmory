@@ -1,5 +1,5 @@
 <%= form_with(model: @story, local: true, url: confirm_stories_path ) do |form| %>
-   <% if story.errors.any? %>
+  <% if story.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
 
@@ -12,17 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.label :管理者用タイトル %>
+    <%= form.text_area :admin_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :共有用タイトル %>
+    <%= form.text_area :title %>
   </div>
 
   <div class="field" %>
-    <%= form.label :image %> 
+    <%= form.label :サムネ画像 %> 
     <!-- ↓確認画面から新規作成画面に戻った時に、アップロードした画像を表示させるための記述 -->
-    <%= image_tag(@story.image.url) if @story.image && @story.image.url%>
-    <%= form.file_field :image %> 
+    <%= image_tag(@story.thumbnail_image.url) if @story.thumbnail_image && @story.thumbnail_image.url%>
+    <%= form.file_field :thumbnail_image %> 
     <!-- ↓一時的なデータとしてファイル構造を含むデータをキャッシュする -->
-    <%= form.hidden_field :image_cache%>
+    <%= form.hidden_field :thumbnail_image_cache%>
   </div>
 
   <div class="actions">
