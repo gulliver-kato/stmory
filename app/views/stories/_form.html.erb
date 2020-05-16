@@ -30,6 +30,23 @@
     <%= form.hidden_field :thumbnail_image_cache%>
   </div>
 
+  <hr>
+
+  <h1>Story登録</h1>
+
+  <%= form.fields_for :parts do |part| %>
+    <div class="field">
+      <%= part.label :コメント %>
+      <%= part.text_area :text %>
+      <%= part.label :画像 %> 
+      <%# <%= image_tag(part.image.url) if part.image && part.image.url %> 
+      <%= part.file_field :image %> 
+      <%= part.hidden_field :image_cache %>
+    </div>
+  <%end%>
+  <div class="add_part">
+    <%= link_to_add_association "Storyを追加", form, :parts %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

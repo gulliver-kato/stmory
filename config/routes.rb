@@ -7,4 +7,10 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+
+  resources :parts do
+    collection do
+      post :confirm
+    end
+  end
 end
