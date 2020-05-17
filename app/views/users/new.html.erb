@@ -12,9 +12,23 @@
 <% end %>
 
 <%= form_with(model: @user, local: true) do |f| %>  
-        <%= f.label :name %>
+        <br><%= f.label :名前 %>
         <%= f.text_field :name %>
-        　
+
+        <br><%= f.label :ニックネーム %>
+        <%= f.text_field :nickname %>
+        
+        <br><%= f.label :年齢 %>
+        <%= f.text_field :age %>
+
+        <br><%= f.label :性別 %>
+        <%= f.select :gender, User.genders.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+        <br><%= f.label :結婚 %>
+        <%= f.select :maritalstatus, User.maritalstatuses.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+        <br><%= f.label :国 %>
+        <%= f.country_select :country, priority_countries: ["JP", "US"] %>
+        <br><%= f.label :都道府県 %>
+        <%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
         <br><%= f.label :email %>
         <%= f.email_field :email %>
 

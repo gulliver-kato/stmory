@@ -1,5 +1,3 @@
-ActiveRecord::Schema.define(version: 2020_05_16_144606) do
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@ ActiveRecord::Schema.define(version: 2020_05_16_144606) do
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_163335) do
+ActiveRecord::Schema.define(version: 2020_05_17_032531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_163335) do
     t.string "title"
     t.string "thumbnail_image"
   end
-  
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "nickname"
@@ -51,12 +49,13 @@ ActiveRecord::Schema.define(version: 2020_05_14_163335) do
     t.integer "gender"
     t.integer "maritalstatus"
     t.integer "country"
-    t.string "prefecture"
+    t.integer "prefecture"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
   add_foreign_key "parts", "stories"
 end
