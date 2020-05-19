@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :users
+  end
+
   resources :parts do
     collection do
       post :confirm
