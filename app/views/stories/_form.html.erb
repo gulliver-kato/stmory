@@ -1,53 +1,69 @@
-<%= form_with(model: @story, local: true, url: confirm_stories_path ) do |form| %>
-  <% if story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">New Story</a>
+</nav>
 
-      <ul>
-      <% story.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container mt-5 p-lg-5 bg-light">
+  <%= form_with(model: @story, local: true, url: confirm_stories_path ) do |form| %>
+    <% if story.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+        <ul>
+        <% story.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="form-row mb-4">
+    <div class="col-md-6">
+      <div class="field">
+        <br><%= form.label :管理者用タイトル %>
+        <br><%= form.text_area :admin_title, class:"form-control" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :管理者用タイトル %>
-    <%= form.text_area :admin_title %>
+    <div class="col-md-6">
+      <div class="field">
+        <br><%= form.label :共有用タイトル %>
+        <br><%= form.text_area :title, class:"form-control" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="field">
+        <br><%= form.label :サムネ画像 %>
+        <br><%= image_tag(@story.thumbnail_image.url) if @story.thumbnail_image && @story.thumbnail_image.url%>
+        <br><%= form.file_field :thumbnail_image %>
+        <!-- ↓一時的なデータとしてファイル構造を含むデータをキャッシュする -->
+        <br><%= form.hidden_field :thumbnail_image_cache%>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :共有用タイトル %>
-    <%= form.text_area :title %>
-  </div>
-
-  <div class="field" %>
-    <%= form.label :サムネ画像 %> 
-    <!-- ↓確認画面から新規作成画面に戻った時に、アップロードした画像を表示させるための記述 -->
-    <%= image_tag(@story.thumbnail_image.url) if @story.thumbnail_image && @story.thumbnail_image.url%>
-    <%= form.file_field :thumbnail_image %> 
-    <!-- ↓一時的なデータとしてファイル構造を含むデータをキャッシュする -->
-    <%= form.hidden_field :thumbnail_image_cache%>
-  </div>
-
-  <hr>
-
-  <h1>Story登録</h1>
 
   <%= form.fields_for :parts do |part| %>
-    <div class="field">
-      <%= part.label :コメント %>
-      <%= part.text_area :text %>
-      <%= part.label :画像 %> 
-      <%# <%= image_tag(part.image.url) if part.image && part.image.url %> 
-      <%= part.file_field :image %> 
-      <%= part.hidden_field :image_cache %>
+    <div class="form-row mb-4">
+      <div class="col-md-6">
+        <div class="field">
+          <br><%= part.label :コメント %>
+          <br><%= part.text_area :text, class:"form-control" %>
+        </div>
+        <div class="field">
+          <br><%= part.label :画像 %> 
+          <br><%= part.file_field :image %> 
+          <br><%= part.hidden_field :image_cache %>
+        </div>
+      </div>
     </div>
   <%end%>
-  <div class="add_part">
-    <%= link_to_add_association "Storyを追加", form, :parts %>
+  <div class="form-row mb-4">
+    <div class="col-md-6">
+      <div class="add_part">
+        <br><%= link_to_add_association "Storyを追加", form, :parts, class: "btn btn-info mx-2" %>
+      </div>
+    </div>
   </div>
+  
   <div class="actions">
+    <br>
     <%= form.submit %>
   </div>
 <% end %>

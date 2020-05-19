@@ -1,12 +1,21 @@
-<p id="notice"><%= notice %></p>
+<%# <p id="notice"><%= notice %></p> 
 
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><%= @story.admin_title %></a>
+</nav>
 
-<h1>My Story</h1>
+<div class="container mt-5 p-lg-5 bg-light">
 <br><% @story.parts.each do |p| %>
-      <%= p.text %>
-      <br>
+　<div class="card" style="width: 20rem;">
+　　 <ul class="list-group list-group-flush">
+      <li class="list-group-item list-group-item-info"><%= p.text %></li>
+    </ul>
       <%= image_tag(p.image.url) if p.image && p.image.url %>
-      <br>
-    <% end %>
+　</div>
+<% end %>
+  <td><%= link_to 'Edit', edit_story_path(@story), class: "btn btn-secondary" %></td></a>
+  <td><%= link_to 'Destroy', class: "btn btn-secondary", method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td></a>
+
 <br>
 <%= link_to 'Back', stories_path %>
+</div>

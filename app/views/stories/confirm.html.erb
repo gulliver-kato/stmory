@@ -1,5 +1,9 @@
-<h1>確認画面</h1>
-<%= form_with(model: @story, local: true) do |form| %>
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">確認画面</a>
+</nav>
+
+<div class="container mt-5 p-lg-5 bg-light">
+<%= form_with(model: @story, local:true) do |form| %>
   <p>管理用タイトル:<%= @story.admin_title %></p>
   <p>共有用タイトル:<%= @story.title %></p>
 
