@@ -1,11 +1,17 @@
 class User < ApplicationRecord
+    validates :name, presence: true
+    validates :nickname, presence: true
+    validates :age, presence: true
+    validates :gender, presence: true
+    
     validates :name, presence: true, length: { maximum: 30}
     validates :email, presence: true, length: {maximum: 255},
                 format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
     before_validation { email.downcase! }
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
-    
+    has_many :stories
+
     enum gender: { 男性:1, 女性:2 }
     enum maritalstatus: { 未婚:1, 既婚:2 }
     enum prefecture: {

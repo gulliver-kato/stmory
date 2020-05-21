@@ -3,7 +3,8 @@
 </nav>
 
 <div class="container mt-5 p-lg-5 bg-light">
-  <%= form_with(model: @story, local: true, url: confirm_stories_path, method: :post) do |form| %>
+  <%#= form_with(model: @story, local: true, url: confirm_stories_path, method: :post) do |form| %>
+  <%= form_with(model: @story, local: true) do |form| %>
     <% if story.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
@@ -51,6 +52,7 @@
           <br><%= image_tag(@story.parts[part.index].image.url) if @story.parts[part.index].image && @story.parts[part.index].image.url%>
           <br><%= part.file_field :image %> 
           <br><%= part.hidden_field :image_cache %>
+          <br><%#= link_to "タイトル＋画像を削除", parts_path(@story, @story.parts[part.index].id) , method: :delete %>
         </div>
       </div>
     </div>
