@@ -33,14 +33,11 @@
                     <br><%= f.label :gender %>
                     <br><%= f.select :gender, User.genders.keys, {prompt: '選択してください'}, class: 'form-control' %>
                 </div>
+
                 <div class="col-md-6">
                     <br><%= f.label :maritalstatus %>
                     <br><%= f.select :maritalstatus, User.maritalstatuses.keys, {prompt: '選択してください'}, class: 'form-control' %>
                 </div>
-                <%# <div class="col-md-6">
-                    <br><%= f.label :国 %>
-                    <%# <br><%= f.country_select :country, priority_countries: ["JP", "US"], class: 'form-control' %> 
-                <%# </div> %> 
                 <div class="col-md-6">
                     <br><%= f.label :prefecture %>
                     <%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: 'form-control' %>
