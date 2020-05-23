@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <nav class="navbar navbar-light navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">新規登録</a>
+    <a class="navbar-brand" ><%= t('view.user.newcreate') %></a>
 </nav>
 
 <div class="container mt-5 p-lg-5 bg-light">
@@ -18,23 +18,23 @@
     <%= form_with(model: @user, local: true) do |f| %>  
             <div class="form-row mb-4">
                 <div class="col-md-6">
-                    <br><%= f.label :名前 %>
+                    <br><%= f.label :name %>
                     <br><%= f.text_field :name, class:"form-control" %>
                 </div>
                 <div class="col-md-6">
-                    <br><%= f.label :ニックネーム %>
+                    <br><%= f.label :nickname %>
                     <br><%= f.text_field :nickname, class:"form-control" %>
                 </div>
                 <div class="col-md-6">
-                    <br><%= f.label :年齢 %>
+                    <br><%= f.label :age %>
                     <br><%= f.text_field :age, class:"form-control" %>
                 </div>
                 <div class="col-md-6">
-                    <br><%= f.label :性別 %>
+                    <br><%= f.label :gender %>
                     <br><%= f.select :gender, User.genders.keys, {prompt: '選択してください'}, class: 'form-control' %>
                 </div>
                 <div class="col-md-6">
-                    <br><%= f.label :結婚 %>
+                    <br><%= f.label :maritalstatus %>
                     <br><%= f.select :maritalstatus, User.maritalstatuses.keys, {prompt: '選択してください'}, class: 'form-control' %>
                 </div>
                 <%# <div class="col-md-6">
@@ -42,7 +42,7 @@
                     <%# <br><%= f.country_select :country, priority_countries: ["JP", "US"], class: 'form-control' %> 
                 <%# </div> %> 
                 <div class="col-md-6">
-                    <br><%= f.label :都道府県 %>
+                    <br><%= f.label :prefecture %>
                     <%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: 'form-control' %>
                 </div>
                 <div class="col-md-6">
@@ -54,7 +54,7 @@
                     <%= f.password_field :password, class:"form-control" %>
                 </div>
                 <div class="col-md-6">
-                    <br><%= f.label :password_Confirmation %>
+                    <br><%= f.label :password_confirmation %>
                     <%= f.password_field :password_confirmation, class:"form-control" %>
                 </div>
             </div>

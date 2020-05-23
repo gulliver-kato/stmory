@@ -46,6 +46,9 @@
 <% end %> 
 <p><%= link_to 'My Story', mystory_stories_path, class: "btn btn-info mx-2"%></p>
 <p><%= link_to 'New Story', new_story_path, class: "btn btn-info mx-2" %></p>
+<%if @user.admin?%>
+<p><%= link_to '管理画面', admin_users_path, class: "btn btn-info mx-2" %></p>
+<%end%>
 </div>
 
 </div>

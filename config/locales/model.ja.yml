@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      story: ブログ
+      user: ユーザー
+    attributes:
+      story:
+        admin_title: 管理用タイトル
+        title: 共有用タイトル
+        thumbnail_image: サムネ画像 
+      part:
+        text: テキスト
+        image: 画像
+      user:
+        name: 名前
+        nickname: ニックネーム
+        age: 年齢
+        gender: 性別
+        maritalstatus: 結婚
+        country: 国
+        prefecture: 都道府県
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
