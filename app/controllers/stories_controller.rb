@@ -24,8 +24,12 @@ class StoriesController < ApplicationController
   end
 
   def mystory
-    @stories = current_user.stories
-    @user = current_user
+    if logged_in?
+      @stories = current_user.stories
+      @user = current_user
+    else
+      redirect_to root_path, notice: 'ログインしてくだい'
+    end
   end
 
   def edit
@@ -44,7 +48,7 @@ class StoriesController < ApplicationController
     if @story.update(story_params)
       redirect_to stories_path, notice: 'storyを更新しました'
     else
-      render :edit,  notice: 'storyを更新できませんでした'
+      render :edit, notice: 'storyを更新できませんでした'
     end
   end
 

@@ -24,7 +24,7 @@ class Admin::UsersController < ApplicationController
     
     def update
         if @user.update(user_params)
-            redirect_to(admin_users_path)
+            redirect_to admin_users_path
         else
             render :edit
         end
@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
     
     def destroy
         if @user.destroy
-            redirect_to(admin_users_path)
+            redirect_to admin_users_path
         else
             redirect_to admin_users_path, notice: t('view.user.destroy_errer')
         end

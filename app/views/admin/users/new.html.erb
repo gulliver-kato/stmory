@@ -15,7 +15,7 @@
                 </ul>
             </div>
     <% end %>
-    <%= form_with(model: @user, local: true) do |f| %>  
+    <%= form_with(model: [:admin, @user], local: true) do |f| %>  
             <div class="form-row mb-4">
                 <div class="col-md-6">
                     <br><%= f.label :名前 %>
@@ -41,10 +41,10 @@
                     <br><%= f.label :結婚 %>
                     <br><%= f.select :maritalstatus, User.maritalstatuses.keys, {prompt: '選択してください'}, class: 'form-control' %>
                 </div>
-                <div class="col-md-6">
+                <%# <div class="col-md-6">
                     <br><%= f.label :国 %>
-                    <br><%= f.country_select :country, priority_countries: ["JP", "US"], class: 'form-control' %>
-                </div>
+                    <%# <br><%= f.country_select :country, priority_countries: ["JP", "US"], class: 'form-control' %>
+                <%# </div> %> 
                 <div class="col-md-6">
                     <br><%= f.label :都道府県 %>
                     <%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: 'form-control' %>

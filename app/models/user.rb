@@ -25,4 +25,21 @@ class User < ApplicationRecord
         福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46, 
         沖縄県:47
     }
+
+    def reject_destroy_admin
+        if User.where(admin: true).count == 1
+            user = User.where(admin: true)
+            throw :abort if user[0] == self
+        end
+    end
+
+    def reject_update_admin
+        if User.where(admin: true).count == 1 && admin == false
+            user = User.where(admin: true)
+            if user[0] == self
+                errors.add(:user, '更新にエラーがあります。現在あなたのみが管理人のため管理人から外れることはできません。')
+                throw :abort
+            end
+        end
+    end
 end

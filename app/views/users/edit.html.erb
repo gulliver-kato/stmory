@@ -37,10 +37,10 @@
             <br><%= f.label :結婚 %>
             <br><%= f.select :maritalstatus, User.maritalstatuses.keys, {prompt: '選択してください'}, class: 'form-control' %>
         </div>
-        <div class="col-md-6">
+        <%# <div class="col-md-6">
             <br><%= f.label :国 %>
-            <br><%= f.country_select :country, priority_countries: ["JP", "US"], class: 'form-control' %>
-        </div>
+            <%# <br><%= f.country_select :country, priority_countries: ["JP", "US"], class: 'form-control' %> %>
+        <%# </div> %>
         <div class="col-md-6">
             <br><%= f.label :都道府県 %>
             <%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: 'form-control' %>
