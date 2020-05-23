@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   resources :stories do
     collection do
       post :confirm
+      get :mystory
     end
+  end
+
+  namespace :admin do
+    resources :users
   end
 
   resources :parts do
@@ -16,7 +21,7 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  
+  root 'stories#index'
   resources :sessions, only:[:new, :create, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
 end

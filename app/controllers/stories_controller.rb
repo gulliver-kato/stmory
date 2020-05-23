@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_story, only: [:edit, :show, :update, :destroy]
 
   def index
     @story = Story.all
@@ -23,16 +23,33 @@ class StoriesController < ApplicationController
     @story.parts.build
   end
 
+  def mystory
+    if logged_in?
+      @stories = current_user.stories
+      @user = current_user
+    else
+      redirect_to root_path, notice: 'ログインしてくだい'
+    end
+  end
+
   def edit
   end
 
   def create
-    @story = Story.new(story_params) 
-    @story.save 
-    redirect_to stories_path
+    @story = current_user.stories.build(story_params)
+    if @story.save
+      redirect_to story_path(@story), notice: 'storyを作成しました'
+    else
+      render :new, notice: 'storyを作成できませんでした'
+    end
   end
 
   def update
+    if @story.update(story_params)
+      redirect_to stories_path, notice: 'storyを更新しました'
+    else
+      render :edit, notice: 'storyを更新できませんでした'
+    end
   end
 
   def destroy
@@ -51,6 +68,6 @@ class StoriesController < ApplicationController
   end
 
   def story_params
-    params.require(:story).permit(:admin_title, :title, :thumbnail_image, :thumbnail_image_cache, parts_attributes: [:text, :image, :story_id, :image_cache, :_destroy])
+    params.require(:story).permit(:admin_title, :title, :thumbnail_image, :thumbnail_image_cache, :user_id, parts_attributes: [:text, :image, :story_id, :image_cache, :_destroy])
   end
 end

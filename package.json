@@ -2,6 +2,8 @@
   "name": "stomory",
   "private": true,
   "dependencies": {
-    "cocoon": "github:nathanvda/cocoon#c24ba53"
+    "bootstrap": "4",
+    "cocoon": "github:nathanvda/cocoon#c24ba53",
+    "jquery": "^3.5.1"
   }
 }

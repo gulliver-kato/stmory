@@ -14,15 +14,13 @@
       <%= content_tag(:div, value, class: "#{key}") %> 
     <% end %>
 
-    <nav class= "navbar navbar-dark bg-primary " style="background-color: #e3f2fd;" >
       <% if logged_in? %>
-        <%= link_to "profile", user_path(current_user.id), class: 'text-light' %>
-        <%= link_to "logout", session_path(current_user.id), method: :delete , class: 'text-light' %>
+        <%= link_to "profile", user_path(current_user.id) %>
+        <%= link_to "logout", session_path(current_user.id), method: :delete %>
         <% else %>
-        <%= link_to "sign up", new_user_path , class: 'text-light' %>
-        <%= link_to "login", new_session_path , class: 'text-light' %>
+        <%= link_to "sign up", new_user_path %>
+        <%= link_to "login", new_session_path %>
       <% end %>
-    </nav>
     <%= yield %> 
   </body>
 </html>

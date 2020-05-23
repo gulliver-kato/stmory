@@ -1,11 +1,19 @@
-<h1>log in</h1>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f|%>
+<nav class="navbar navbar-light navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">log in</a>
+</nav>
 
-    <%= f.label :email%>
-    <%= f.email_field :email %>
-
-    <%= f.label :password%>
-    <%= f.password_field :password%>
-
-    <%= f.submit "log in" %>
-<% end %>
+<div class="container mt-5 p-lg-5 bg-light">
+    <%= form_with(scope: :session, url: sessions_path, local: true) do |f|%>
+        <div class="form-row mb-4">
+            <div class="col-md-6">
+                <%= f.label :email%>
+                <br><%= f.email_field :email, class:"form-control" %>
+            </div>
+            <div class="col-md-6">
+                <%= f.label :password%>
+                <br><%= f.password_field :password, class:"form-control" %>
+            </div>
+        </div>
+        <br><%= f.submit "log in" %>
+    <% end %>
+</div>
