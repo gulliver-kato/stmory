@@ -40,6 +40,7 @@ class StoriesController < ApplicationController
     if @story.save
       redirect_to story_path(@story), notice: 'storyを作成しました'
     else
+      @story.parts.build
       render :new, notice: 'storyを作成できませんでした'
     end
   end
@@ -56,7 +57,7 @@ class StoriesController < ApplicationController
     @story.destroy
     @story.parts.build
     respond_to do |format|
-      format.html { redirect_to stories_url, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to mystory_stories_path, notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

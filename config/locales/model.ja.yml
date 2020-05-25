@@ -6,10 +6,14 @@ ja:
     attributes:
       story:
         admin_title: 管理用タイトル
-        title: 共有用タイトル
-        thumbnail_image: サムネ画像 
+        title: タイトル
+        thumbnail_image: 表紙画像
+        parts: コメントと画像
+      parts:
+        text: コメント
+        image: 画像
       part:
-        text: テキスト
+        text: コメント
         image: 画像
       user:
         name: 名前
