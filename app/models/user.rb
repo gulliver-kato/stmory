@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     validates :name, presence: true
     validates :nickname, presence: true
-    validates :age, presence: true
+    validates :age, numericality: { greater_than_or_equal_to: 5 }
     validates :gender, presence: true
     
     validates :name, presence: true, length: { maximum: 30}
