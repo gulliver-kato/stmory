@@ -4,17 +4,17 @@
 
 <div class="container mt-5 p-lg-5 bg-light">
 <%= form_with(model: @story, local:true) do |form| %>
-  <p>管理用タイトル:<%= @story.admin_title %></p>
-  <p>共有用タイトル:<%= @story.title %></p>
+  <%# <p>管理用タイトル:<%= @story.admin_title %>
+  <p>タイトル:<%= @story.title %></p>
 
   <%= image_tag(@story.thumbnail_image.url) if @story.thumbnail_image && @story.thumbnail_image.url %>
   <%= form.hidden_field :thumbnail_image_cache %>
-  <%= form.hidden_field :admin_title %>
+  <%# <%= form.hidden_field :admin_title %>
   <%= form.hidden_field :title %>
 
   <% @story.parts.each do |part| %>
-    <%= part.text %>
-    <%= image_tag(part.image.url) if part.image && part.image.url %>
+    <P><%= part.text %></P>
+    <P><%= image_tag(part.image.url) if part.image && part.image.url %></P>
   <% end %>
   
   <%= form.fields_for :parts do |part| %>
@@ -26,9 +26,9 @@
 <% end %>
 
 <%= form_with(model: @story, url:new_story_path, local:true, method:"get") do |form| %>
-  <%= form.hidden_field :thumbnail_image_cache %>
-  <%= form.hidden_field :admin_title %>
-  <%= form.hidden_field :title %>
+  <br><%= form.hidden_field :title %>
+  <br><%= form.hidden_field :thumbnail_image_cache %>
+  <%# <%= form.hidden_field :admin_title %>
   <%= form.fields_for :parts do |part| %>
     <%= part.hidden_field :text %>
     <%= part.hidden_field :image %> 

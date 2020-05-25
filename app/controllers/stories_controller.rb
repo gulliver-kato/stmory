@@ -40,6 +40,7 @@ class StoriesController < ApplicationController
     if @story.save
       redirect_to story_path(@story), notice: 'storyを作成しました'
     else
+      @story.parts.build
       render :new, notice: 'storyを作成できませんでした'
     end
   end
